@@ -1,0 +1,89 @@
+﻿@model MonsterHunterAPI.Web.Models.WeaponDataEntryModel
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+
+
+<div class="container">
+    <div class="">
+        @using (Html.BeginForm("Create", "DataInput", FormMethod.Post))
+        {
+            <fieldset>
+                <div >
+                    @Html.LabelFor(model => model.Name)
+                </div>
+                <div >
+                    @Html.TextBoxFor(model => model.Name)
+                </div>                
+            </fieldset>
+            <br />
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Rarity)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Rarity)
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Attack)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Attack)
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Element)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Element)
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Sharpness)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Sharpness)
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Slots)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Slots)
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Affinity)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Affinity)
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <div class="">
+                    @Html.LabelFor(model => model.Defense)
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Defense)
+                </div>
+            </fieldset>
+            <br />
+            <input type="submit" value="Add New Entry" />
+        }
+    </div>
+</div>
