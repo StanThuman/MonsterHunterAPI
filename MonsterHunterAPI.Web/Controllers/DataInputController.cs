@@ -11,16 +11,23 @@ namespace MonsterHunterAPI.Web.Controllers
 {
     public class DataInputController : Controller
     {
-        WeaponService _service;
-        
-        public DataInputController(IWeaponService service)
+        WeaponService _weaponService;
+        ElementService _elementService;
+
+        public DataInputController(IWeaponService weaponService, IElementService elementService)
         {
-            this._service = new WeaponService(service);
+            this._weaponService = new WeaponService(weaponService);
+            this._elementService = new ElementService(elementService);
             
         }
         // GET: DataInput
         public ActionResult Index()
         {
+            _elementService.AddNewElement(new ElementDataEntryModel()
+            {
+                Name = "Fire"
+            });
+
             return View();
         }
 
@@ -37,7 +44,7 @@ namespace MonsterHunterAPI.Web.Controllers
             };
 
             
-            _service.AddWeaponToDb(testObject);
+            _weaponService.AddWeaponToDb(testObject);
             return Redirect("/DataInput");
         }
 

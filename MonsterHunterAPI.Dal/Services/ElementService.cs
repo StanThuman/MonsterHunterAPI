@@ -21,6 +21,8 @@ namespace MonsterHunterAPI.Dal.Services
         public void AddNewElement(ElementDTO model)
         {
             Element newElement = ElementMapper(model);
+            System.Diagnostics.Debug.WriteLine("inside new element service");
+            System.Diagnostics.Debug.WriteLine(newElement.Name);
             //_db.Elements.Add(newElement);
         }
 
