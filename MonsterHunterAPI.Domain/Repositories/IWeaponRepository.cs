@@ -9,10 +9,10 @@ namespace MonsterHunterAPI.Domain.Repositories
 {
     public interface IWeaponRepository
     {
-        void GetAllWeapons();
-        void GetAllWeaponsByClass();
-        void GetWeapon(string weaponName);
         void AddNewWeaponToDb(WeaponDTO model);
+        void GetAllWeapons();
+        void GetAllWeaponsByClass();        
+        WeaponDTO GetWeapon(string weaponName);
 
         //void RemoveWeapon();
 

@@ -24,11 +24,11 @@ namespace MonsterHunterAPI.Web.Services
         public void AddWeaponToDb(WeaponDataEntryModel model)
         {
 
-            _service.AddNewWeapon(MapWeaponToWeaponDTO(model));
+            _service.AddNewWeapon(WeaponDTOMapper(model));
 
         }
 
-        private  WeaponDTO MapWeaponToWeaponDTO(WeaponDataEntryModel model)
+        private  WeaponDTO WeaponDTOMapper(WeaponDataEntryModel model)
         {
             return new WeaponDTO()
             {
@@ -36,6 +36,7 @@ namespace MonsterHunterAPI.Web.Services
                 Rarity = model.Rarity,
                 Attack = model.Attack,
                 Element = model.Element,
+                ElementDamage = model.ElementDamange,
                 Sharpness = model.Sharpness,
                 Slots = model.Slots,
                 Affinity = model.Affinity,

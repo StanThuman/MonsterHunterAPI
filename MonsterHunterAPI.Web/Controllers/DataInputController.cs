@@ -12,21 +12,18 @@ namespace MonsterHunterAPI.Web.Controllers
     public class DataInputController : Controller
     {
         WeaponService _weaponService;
-        ElementService _elementService;
+        
 
-        public DataInputController(IWeaponService weaponService, IElementService elementService)
+        public DataInputController(IWeaponService weaponService)
         {
             this._weaponService = new WeaponService(weaponService);
-            this._elementService = new ElementService(elementService);
+            
             
         }
         // GET: DataInput
         public ActionResult Index()
         {
-            _elementService.AddNewElement(new ElementDataEntryModel()
-            {
-                Name = "Fire"
-            });
+            
 
             return View();
         }
@@ -39,6 +36,8 @@ namespace MonsterHunterAPI.Web.Controllers
                 Name = "test sword",
                 Rarity = 3,
                 Attack = 234,
+                Element = "water",
+                ElementDamange = 343,
                 Affinity = 32,
                 Slots = 3
             };

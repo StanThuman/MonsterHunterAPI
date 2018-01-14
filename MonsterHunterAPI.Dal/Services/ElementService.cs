@@ -6,36 +6,29 @@ using System.Threading.Tasks;
 using MonsterHunterAPI.Dal.Models;
 using MonsterHunterAPI.Domain.Services;
 using MonsterHunterAPI.Domain.Models;
+using MonsterHunterAPI.Domain.Repositories;
 
 namespace MonsterHunterAPI.Dal.Services
 {
     public class ElementService : IElementService
     {
-        private MonsterHunterContext _db;
+        private IElementRepository _elementRepository;
         
-        public ElementService()
+        public ElementService(IElementRepository db)
         {
-            _db = new MonsterHunterContext();
+            _elementRepository = db;
         }
 
         public void AddNewElement(ElementDTO model)
-        {
-            Element newElement = ElementMapper(model);
-            System.Diagnostics.Debug.WriteLine("inside new element service");
-            System.Diagnostics.Debug.WriteLine(newElement.Name);
-            //_db.Elements.Add(newElement);
+        {           
+            _elementRepository.AddNewElement(model);
         }
 
-
-        private Element ElementMapper(ElementDTO model)
+        public IEnumerable<ElementDTO> GetAllElements()
         {
-            return new Element()
-            {
-                Name = model.Name
-                
-
-            };
-
+            return _elementRepository.GetAllElements();
         }
+
+        
     }
 }

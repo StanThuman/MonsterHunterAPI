@@ -10,5 +10,6 @@ namespace MonsterHunterAPI.Domain.Services
     public interface IElementService
     {
         void AddNewElement(ElementDTO model);
+        IEnumerable<ElementDTO> GetAllElements();
     }
 }

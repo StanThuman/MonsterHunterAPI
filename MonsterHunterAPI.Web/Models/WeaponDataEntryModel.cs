@@ -11,6 +11,7 @@ namespace MonsterHunterAPI.Web.Models
         public int Rarity { get; set; }
         public int Attack { get; set; }
         public string Element { get; set; }
+        public ushort ElementDamange { get; set; }
         public string Sharpness { get; set; }
         public int Slots { get; set; }
         public int Affinity { get; set; }

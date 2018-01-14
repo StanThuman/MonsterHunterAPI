@@ -9,5 +9,6 @@ namespace MonsterHunterAPI.Domain.Models
     public class ElementDTO
     {
         public string Name { get; set; }
+        public int ElementDamage { get; set; }
     }
 }

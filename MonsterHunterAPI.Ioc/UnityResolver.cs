@@ -22,6 +22,7 @@ namespace MonsterHunterAPI.IoC
             container.RegisterType<IWeaponService, WeaponService>();
             container.RegisterType<IElementRepository, ElementRepository>();
             container.RegisterType<IElementService, ElementService>();
+            
 
         }
 

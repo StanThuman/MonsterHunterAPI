@@ -14,37 +14,45 @@ namespace MonsterHunterAPI.Dal.Services
     public class WeaponService : IWeaponService
     {
 
-        IWeaponRepository _db;
+        IWeaponRepository _weaponRepo;
+        IEquipmentElementService _equipmentElementService;
 
-        public WeaponService(IWeaponRepository weaponsRepository)
+        public WeaponService(IWeaponRepository weaponsRepository, IEquipmentElementService equipmentElementService)
         {
-            _db = weaponsRepository;
+            __weaponRepo = weaponsRepository;
+            _equipmentElementService = equipmentElementService;
         }
 
+        
+
+        //start of interface implementation
+        public void AddNewWeapon(WeaponDTO model)
+        {
+            //check is weapon has element
+            //find element id
+            //add new Equipment_element                 
+            _weaponRepo.AddNewWeaponToDb(model);
+
+            WeaponDTO weapon = _weaponRepo.GetWeapon(model.Name);
+            _equipmentElementService.AddNewEquipmentElement(weapon.WeaponId, model.Element, model.ElementDamage);
+
+        }
         public void GetAllWeapons()
         {
-            _db.GetAllWeapons();
+            _weaponRepo.GetAllWeapons();
         }
 
         public void GetAllWeaponsByClass()
         {
-            _db.GetAllWeaponsByClass();
+            _weaponRepo.GetAllWeaponsByClass();
         }
 
-        public void GetWeapon(string weaponName)
+        public WeaponDTO GetWeapon(string weaponName)
         {
-            throw new NotImplementedException();
+            //check string
+            return _weaponRepo.GetWeapon(weaponName);
         }
 
-        public void AddNewWeapon(WeaponDTO model)
-        {
-            //check is weapon has element
-                //find element id
-                //add new Equipment_element
-            
-
-            //_db.AddNewWeaponToDb(WeaponMapper(model));
-        }
 
         
 
@@ -57,5 +65,7 @@ namespace MonsterHunterAPI.Dal.Services
 
             
         }
+
+      
     }
 }

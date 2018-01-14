@@ -8,10 +8,12 @@ namespace MonsterHunterAPI.Domain.Models
 {
     public class WeaponDTO
     {        
+        public int WeaponId { get; set; }
         public string Name { get; set; }
         public int Attack { get; set; }
         public int Rarity { get; set; }
         public string Element { get; set; }
+        public ushort ElementDamage { get; set; }
         public string Sharpness { get; set; }
         public int Slots { get; set; }
         public int Affinity { get; set; }

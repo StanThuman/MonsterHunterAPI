@@ -18,7 +18,7 @@ namespace MonsterHunterAPI.Web.Services
             _service = service;
         }
 
-        public void AddNewElement(ElementDataEntryModel model)
+        public void AddNewElementToDb(ElementDataEntryModel model)
         {
             _service.AddNewElement(ElementMapper(model));
         }

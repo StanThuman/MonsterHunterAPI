@@ -17,10 +17,60 @@ namespace MonsterHunterAPI.Dal.Repositories
             _db = new MonsterHunterContext();
         }
 
-        public void AddNewElement(ElementDTO element)
+        public void AddNewElement(ElementDTO model)
         {
+            if(model != null && model.Name != "")
+            {
+                
+                GetAllElements().Where(x => x.Name == model.Name);
 
-            //TODO _db.Elements.Add(element)
+                
+            }
+
+            _db.Elements.Add(ElementMapper(model));
+
+       
         }
+
+        public int GetElementId(string elementName)
+        {
+            return 1;
+        }
+
+        public IEnumerable<ElementDTO> GetAllElements()
+        {
+            return ElementDTOMapper(_db.Elements.AsEnumerable<Element>());
+        }
+
+        private Element ElementMapper(ElementDTO model)
+        {
+            return new Element()
+            {
+                Name = model.Name
+
+            };
+
+        }
+
+        private IEnumerable<ElementDTO> ElementDTOMapper(IEnumerable<Element> modelList)
+        {
+            List<ElementDTO> newList = new List<ElementDTO>();
+
+            ElementDTO tempElement;
+            foreach(Element ele in modelList)
+            {
+                tempElement = new ElementDTO()
+                {
+                    Name = ele.Name
+                };                
+                
+                newList.Add(tempElement);
+            }
+
+            return newList.AsEnumerable<ElementDTO>();
+        }
+
+
+
     }
 }
