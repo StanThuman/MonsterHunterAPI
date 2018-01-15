@@ -15,7 +15,7 @@ namespace MonsterHunterAPI.Domain.Services
         //do stuff to data
         void GetAllWeapons();
         void GetAllWeaponsByClass();
-        void GetWeapon(string weaponName);
+        WeaponDTO GetWeapon(string weaponName);
         
 
         void SortWeapons();

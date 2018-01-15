@@ -15,12 +15,13 @@ namespace MonsterHunterAPI.Dal.Services
     {
 
         IWeaponRepository _weaponRepo;
+        //IEquipmentElementRepository _equipmentElementRepo;
         IEquipmentElementService _equipmentElementService;
 
-        public WeaponService(IWeaponRepository weaponsRepository, IEquipmentElementService equipmentElementService)
+        public WeaponService(IWeaponRepository weaponsRepo, IEquipmentElementService equipmentElementService)
         {
-            __weaponRepo = weaponsRepository;
-            _equipmentElementService = equipmentElementService;
+            _weaponRepo = weaponsRepo;
+            _equipmentElementService  = equipmentElementService;
         }
 
         
@@ -31,10 +32,8 @@ namespace MonsterHunterAPI.Dal.Services
             //check is weapon has element
             //find element id
             //add new Equipment_element                 
-            _weaponRepo.AddNewWeaponToDb(model);
-
-            WeaponDTO weapon = _weaponRepo.GetWeapon(model.Name);
-            _equipmentElementService.AddNewEquipmentElement(weapon.WeaponId, model.Element, model.ElementDamage);
+            _weaponRepo.AddNewWeaponToDb(model);            
+            _equipmentElementService.AddNewEquipmentElement(model.Name, model.Element, model.ElementDamage);
 
         }
         public void GetAllWeapons()
@@ -52,16 +51,14 @@ namespace MonsterHunterAPI.Dal.Services
             //check string
             return _weaponRepo.GetWeapon(weaponName);
         }
-
-
         
 
         public void SortWeapons()
         {
-            System.Diagnostics.Debug.WriteLine("inside weaponService: sort weapons() function");
-            _db.GetAllWeapons();
-            _db.GetAllWeaponsByClass();
-            _db.GetWeapon("something");
+            //System.Diagnostics.Debug.WriteLine("inside weaponService: sort weapons() function");
+            //_db.GetAllWeapons();
+            //_db.GetAllWeaponsByClass();
+            //_db.GetWeapon("something");
 
             
         }

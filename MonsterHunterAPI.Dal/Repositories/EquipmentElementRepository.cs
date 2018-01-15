@@ -18,7 +18,7 @@ namespace MonsterHunterAPI.Dal.Repositories
             _db = new MonsterHunterContext();
         }
 
-        public void AddNewEquipmentElement(int weaponId, int elementDamage)
+        public void AddNewEquipmentElement(int weaponId, string elementName, int elementDamage)
         {
 
         }

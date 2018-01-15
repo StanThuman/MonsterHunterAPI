@@ -10,20 +10,29 @@ using MonsterHunterAPI.Domain.Services;
 
 namespace MonsterHunterAPI.Dal.Services
 {
+
     public class EquipmentElementService : IEquipmentElementService
     {
-        IEquipmentElementRepository _db;
-        IElementService _elementService;
+        IEquipmentElementRepository _equipElementRepo;
+        IWeaponRepository _weaponRepo;
+        IElementRepository _elementRepo;
+        //IElementService _elementService;
 
-        public EquipmentElementService(IEquipmentElementRepository db, IElementService elementService)
+        public EquipmentElementService(IEquipmentElementRepository equipElementRepo, IWeaponRepository weaponRepo, IElementRepository elementRepo) //IElementService elementService)
         {
-            _db = db;
-            _elementService = elementService;
+            _equipElementRepo = equipElementRepo;
+            _weaponRepo = weaponRepo;
+            _elementRepo = elementRepo;
+            //_elementService = elementService;
         }
 
-        public void AddNewEquipmentElement(int weaponId, string elementName, int elementDamange)
+        public void AddNewEquipmentElement(string weaponName, string elementName, int elementDamange)
         {
-            Element element = null;
+            WeaponDTO tempWeapon = _weaponRepo.GetWeapon(weaponName);
+
+            //find element to see if exists in element table
+            _elementRepo
+
             _elementService.CheckElementName(elementName);
             throw new NotImplementedException();
         }
@@ -33,6 +42,6 @@ namespace MonsterHunterAPI.Dal.Services
             throw new NotImplementedException();
         }
 
-        
+
     }
 }
