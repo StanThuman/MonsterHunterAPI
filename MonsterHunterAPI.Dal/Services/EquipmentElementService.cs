@@ -31,9 +31,9 @@ namespace MonsterHunterAPI.Dal.Services
             WeaponDTO tempWeapon = _weaponRepo.GetWeapon(weaponName);
 
             //find element to see if exists in element table
-            _elementRepo
+            //_elementRepo
 
-            _elementService.CheckElementName(elementName);
+            //_elementService.CheckElementName(elementName);
             throw new NotImplementedException();
         }
 

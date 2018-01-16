@@ -31,6 +31,7 @@ namespace MonsterHunterAPI.Dal.Services
         //start of interface implementation
         public void AddNewWeapon(WeaponDTO model)
         {
+            System.Diagnostics.Debug.WriteLine("inside Add new weapon of WeaponService");
             bool hasElement = false;
             if (model.Element.ToLower() != "none")
                 hasElement = true;
@@ -43,12 +44,12 @@ namespace MonsterHunterAPI.Dal.Services
 
             if (hasElement) {
 
-                int weaponId = _weaponRepo.GetWeapon(model.Name).WeaponId;
+                //int weaponId = _weaponRepo.GetWeapon(model.Name).WeaponId;
                 ElementDTO equipElement = new ElementDTO();
 
-                if (ValidateElementProperty(weaponId, model.Element, model.ElementDamage, ref equipElement)) {
+                if (ValidateElementProperty(0, model.Element, model.ElementDamage, equipElement)) {
 
-                    _equipmentElementRepo.AddNewEquipmentElement(weaponId, equipElement);
+                    _equipmentElementRepo.AddNewEquipmentElement(0, equipElement);
                 }
             }
             //check is weapon has element and if element name exists 
@@ -91,32 +92,49 @@ namespace MonsterHunterAPI.Dal.Services
                 isValid = false;
 
             if (weapon.Slots > 3)
-                isValid = false;            
-            
+                isValid = false;
+
+            System.Diagnostics.Debug.WriteLine("inside validate weapon");
             return isValid;
         }
 
-        private bool ValidateElementProperty(int weaponId, string elementName, int elementDamage, ref ElementDTO newEquipElementAdd)
+        private bool ValidateElementProperty(int weaponId, string elementName, int elementDamage, ElementDTO newEquipElementAdd)
         {
             // add front end checking of uppertcase stirng
             bool isElementValid = false;
-            IEnumerable<ElementDTO> elements = _elementRepo.GetAllElements();
+            IEnumerable<ElementDTO> elements = _elementRepo.GetAllElements().AsEnumerable<ElementDTO>();
 
             //make sure element exists in elelment db
             using (var iterator = elements.GetEnumerator()) {
                 while (!isElementValid && iterator.MoveNext())
                 {
-                    if(elementName == iterator.Current.Name)
+                    System.Diagnostics.Debug.WriteLine("iterate elements: " + iterator.Current.Name);
+                    if (elementName == iterator.Current.Name)
                     {
                         isElementValid = true;
                         newEquipElementAdd.ElementId = iterator.Current.ElementId;
-                        newEquipElementAdd.ElementDamage = iterator.Current.ElementDamage;
+                        
                         newEquipElementAdd.Name = iterator.Current.Name;
+
+                        System.Diagnostics.Debug.WriteLine("found element");
+                        System.Diagnostics.Debug.WriteLine(iterator.Current.ElementId);
+                        System.Diagnostics.Debug.WriteLine(iterator.Current.ElementDamage);
+
+                        System.Diagnostics.Debug.WriteLine('\n');
+
+                        System.Diagnostics.Debug.WriteLine(newEquipElementAdd.ElementId);
+                        System.Diagnostics.Debug.WriteLine(newEquipElementAdd.ElementDamage);
+                        System.Diagnostics.Debug.WriteLine(weaponId);
                     }
                 }
             }
-
+            System.Diagnostics.Debug.WriteLine("inside validateelement");
             
+            //System.Diagnostics.Debug.WriteLine(newEquipElementAdd.ElementId);
+            //System.Diagnostics.Debug.WriteLine(newEquipElementAdd.ElementDamage);
+            //System.Diagnostics.Debug.WriteLine(weaponId);
+
+
             return true;
         }
     }

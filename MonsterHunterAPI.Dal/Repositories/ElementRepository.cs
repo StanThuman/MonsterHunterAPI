@@ -46,6 +46,7 @@ namespace MonsterHunterAPI.Dal.Repositories
         {
             return new Element()
             {
+                ElementId = model.ElementId,
                 Name = model.Name
 
             };
@@ -61,6 +62,7 @@ namespace MonsterHunterAPI.Dal.Repositories
             {
                 tempElement = new ElementDTO()
                 {
+                    ElementId = ele.ElementId,
                     Name = ele.Name
                 };                
                 

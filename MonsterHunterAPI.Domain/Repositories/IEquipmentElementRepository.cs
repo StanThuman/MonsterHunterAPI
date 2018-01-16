@@ -9,7 +9,7 @@ namespace MonsterHunterAPI.Domain.Repositories
 {
     public interface IEquipmentElementRepository
     {
-        void AddNewEquipmentElement(int weaponId, ElementDTO);
+        void AddNewEquipmentElement(int weaponId, ElementDTO element);
         void GetElementByWeaponId(int weaponId);
 
     }

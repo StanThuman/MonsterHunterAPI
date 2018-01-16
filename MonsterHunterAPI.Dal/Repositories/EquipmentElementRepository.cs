@@ -21,6 +21,11 @@ namespace MonsterHunterAPI.Dal.Repositories
 
         public void AddNewEquipmentElement(int weaponId, ElementDTO element)
         {
+            System.Diagnostics.Debug.WriteLine("insdie add new element");
+            System.Diagnostics.Debug.WriteLine(element.ElementId);
+            System.Diagnostics.Debug.WriteLine(element.ElementDamage);
+            System.Diagnostics.Debug.WriteLine(weaponId);
+
             //_db.EquipmentElement.Add(new EquipmentElement()
             //{
             //    WeaponId = weaponId,

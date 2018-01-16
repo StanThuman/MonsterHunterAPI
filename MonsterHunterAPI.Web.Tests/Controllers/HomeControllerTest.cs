@@ -17,7 +17,7 @@ namespace MonsterHunterAPI.Web.Tests.Controllers
         
         IElementService _element;
         //MonsterHunterContext db;
-        MonsterHunterAPI.Web.Services.WeaponService weaponService;
+        Services.WeaponService weaponService;
 
         [TestMethod]
         public void Index()
@@ -26,12 +26,14 @@ namespace MonsterHunterAPI.Web.Tests.Controllers
             //_weapons = new WeaponService(new WeaponRepository());
 
             //Assert.IsNotNull(_weapons);
-            weaponService = new Services.WeaponService(new WeaponService(new WeaponRepository()));
+            weaponService = new Services.WeaponService(new MonsterHunterAPI.Dal.Services.WeaponService(new WeaponRepository(), new EquipmentElementRepository(), new ElementRepository()));
 
             WeaponDataEntryModel testObject = new WeaponDataEntryModel()
             {
                 Name = "test sword",
                 Rarity = 3,
+                Element = "Water",
+                ElementDamange = 384,
                 Sharpness = "white/green",
                 Attack = 234,
                 Affinity = 35,
