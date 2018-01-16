@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MonsterHunterAPI.Dal.Models;
 using MonsterHunterAPI.Domain.Repositories;
+using MonsterHunterAPI.Domain.Models;
 
 namespace MonsterHunterAPI.Dal.Repositories
 {
@@ -18,9 +19,14 @@ namespace MonsterHunterAPI.Dal.Repositories
             _db = new MonsterHunterContext();
         }
 
-        public void AddNewEquipmentElement(int weaponId, string elementName, int elementDamage)
+        public void AddNewEquipmentElement(int weaponId, ElementDTO element)
         {
-
+            //_db.EquipmentElement.Add(new EquipmentElement()
+            //{
+            //    WeaponId = weaponId,
+            //    ElementId = element.ElementId,
+            //    ElementDamange = element.ElementDamage
+            //});
         }
 
         public void GetElementByWeaponId(int weaponId)
